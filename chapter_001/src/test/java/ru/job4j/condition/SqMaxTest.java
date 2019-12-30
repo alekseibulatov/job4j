@@ -28,4 +28,10 @@ public class SqMaxTest {
         int result = check.max(1,5,2, 6);
         assertThat(result, is(6));
     }
+    @Test
+    public void whenThird12Max(){
+        SqMax check = new SqMax();
+        int result = check.max(9,4,12, 6);
+        assertThat(result, is(12));
+    }
 }
