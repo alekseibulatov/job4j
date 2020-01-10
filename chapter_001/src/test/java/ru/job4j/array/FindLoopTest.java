@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 public class FindLoopTest {
     @Test
-    public void whenArrayHas5Then0(){
+    public void whenArrayHas5Then0() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 10, 3};
         int value = 5;
@@ -14,7 +14,7 @@ public class FindLoopTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenArrayHas4Then2(){
+    public void whenArrayHas4Then2() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 10, 4};
         int value = 4;
@@ -23,7 +23,7 @@ public class FindLoopTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenArrayHas3ThenNot(){
+    public void whenArrayHas3ThenNot() {
         FindLoop find = new FindLoop();
         int[] input = new int[] {5, 10, 4};
         int value = 3;
@@ -32,7 +32,7 @@ public class FindLoopTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenFind3(){
+    public void whenFind3() {
         int[] input = new int[] {5, 2, 10, 2, 4};
         int value = 2;
         int start = 2;
@@ -42,7 +42,7 @@ public class FindLoopTest {
         assertThat(result, is(expect));
     }
     @Test
-    public void whenNotFind(){
+    public void whenNotFind() {
         int[] input = new int[] {7, 2, 9, 4, 8};
         int value = 2;
         int start = 2;

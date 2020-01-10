@@ -5,33 +5,33 @@ import static org.junit.Assert.assertThat;
 
 public class SqMaxTest {
     @Test
-    public void whenFirstMax(){
+    public void whenFirstMax() {
         SqMax check = new SqMax();
-        int result = check.max(9,4,2, 6);
+        int result = check.max(9, 4, 2, 6);
         assertThat(result, is(9));
     }
     @Test
-    public void whenSecondMax(){
+    public void whenSecondMax() {
         SqMax check = new SqMax();
-        int result = check.max(1,8,2, 6);
+        int result = check.max(1, 8, 2, 6);
         assertThat(result, is(8));
     }
     @Test
-    public void whenThirdMax(){
+    public void whenThirdMax() {
         SqMax check = new SqMax();
-        int result = check.max(1,4,5, 3);
+        int result = check.max(1, 4, 5, 3);
         assertThat(result, is(5));
     }
     @Test
-    public void whenForthMax(){
+    public void whenForthMax() {
         SqMax check = new SqMax();
-        int result = check.max(1,5,2, 6);
+        int result = check.max(1, 5, 2, 6);
         assertThat(result, is(6));
     }
     @Test
-    public void whenThird12Max(){
+    public void whenThird12Max() {
         SqMax check = new SqMax();
-        int result = check.max(9,4,12, 6);
+        int result = check.max(9, 4, 12, 6);
         assertThat(result, is(12));
     }
 }

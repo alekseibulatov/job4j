@@ -5,7 +5,7 @@ import static org.junit.Assert.assertThat;
 
 public class CounterTest {
     @Test
-    public void whenSumEvenNumbersFromOneToThenThirty(){
+    public void whenSumEvenNumbersFromOneToThenThirty() {
         Counter check = new Counter();
         int sum = check.add(1, 10);
         assertThat(sum, is(30));

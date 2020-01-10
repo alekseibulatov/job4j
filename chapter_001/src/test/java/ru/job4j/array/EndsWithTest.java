@@ -5,16 +5,16 @@ import static org.junit.Assert.*;
 
 public class EndsWithTest {
     @Test
-    public void whenStartWithPrefixThenTrue(){
-        char[] word = {'H', 'e' ,'l' ,'l', 'o'};
-        char[] post = {'l' ,'o'};
+    public void whenStartWithPrefixThenTrue() {
+        char[] word = {'H', 'e', 'l', 'l', 'o'};
+        char[] post = {'l', 'o'};
         boolean result = EndsWith.endsWith(word, post);
         assertThat(result, is(true));
     }
     @Test
-    public void whenStartWithPrefixThenFalse(){
-        char[] word = {'H', 'e' ,'l' ,'l', 'o'};
-        char[] post = {'l' ,'a'};
+    public void whenStartWithPrefixThenFalse() {
+        char[] word = {'H', 'e', 'l', 'l', 'o'};
+        char[] post = {'l', 'a'};
         boolean result = EndsWith.endsWith(word, post);
         assertThat(result, is(false));
     }
