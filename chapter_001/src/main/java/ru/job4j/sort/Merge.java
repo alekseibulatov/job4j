@@ -21,10 +21,9 @@ public class Merge {
                         rsl[i] = right[b];
                         b++;
                     }
-                }
-
-                return rsl;
             }
+                return rsl;
+    }
             public static void main(String[] args) {
                 Merge process = new Merge();
                 int[] rsl = process.merge(new int[]{1, 3, 5}, new int[]{2, 4});
