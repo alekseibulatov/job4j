@@ -7,9 +7,10 @@ public class BallStory {
         Wolf1 wolf1 = new Wolf1();
         Fox fox = new Fox();
 
+        ball.tryEat(ball);
         hare.tryEat(ball);
         wolf1.tryEat(ball);
         fox.tryEat(ball);
-        ball.eat(fox);
+
     }
 }
