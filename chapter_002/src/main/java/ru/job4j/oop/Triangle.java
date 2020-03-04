@@ -10,15 +10,26 @@ public class Triangle {
         this.second = bp;
         this.third = cp;
     }
-    public double period(Triangle that) {
-        return (this.first + this.second + this.third)/2;
+    public double period(double a, double b, double c) {
+        return -1;
 
     }
-
-    public static void main(String[] args) {
-        Triangle a = new Triangle(0.0, 2.4, 3.3);
-
+    public double area() {
+        double rs1 = -1;
+        double a = first.distance(second);
+        double b = first.distance(third);
+        double c = second.distance(third);
+        double p = period(a, b, c);
+        if (this.exist(a, b, c)) {
+            // написать формулу для расчета площади треугольника.
+            rs1 = -1;
+        }
+        return rs1;
     }
-
-
+    private boolean exist(double a, double c, double b) {
+        return false;
+    }
 }
+
+
+
