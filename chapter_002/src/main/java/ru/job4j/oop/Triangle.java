@@ -10,26 +10,34 @@ public class Triangle {
         this.second = bp;
         this.third = cp;
     }
-    public double period(double a, double b, double c) {
-        return -1;
 
+
+    public double period(double a, double b, double c) {
+        return (a + b + c) / 2;
     }
+
     public double area() {
         double rs1 = -1;
-        double a = first.distance(second);
-        double b = first.distance(third);
-        double c = second.distance(third);
-        double p = period(a, b, c);
+        double a = this.first.distance(this.second);
+        double b = this.first.distance(this.third);
+        double c = this.second.distance(this.third);
+        double p = this.period(a, b, c);
         if (this.exist(a, b, c)) {
-            // написать формулу для расчета площади треугольника.
-            rs1 = -1;
+
+            rs1 = Math.sqrt(p * (p - a) * (p - b) * (p - c));
         }
         return rs1;
     }
-    private boolean exist(double a, double c, double b) {
-        return false;
+
+    public boolean exist(double a, double c, double b) {
+        if ((a + b >= c) && (b + c >= a) && (c + a >= b)) {
+            return true;
+        } else
+            return false;
     }
 }
+
+
 
 
 
