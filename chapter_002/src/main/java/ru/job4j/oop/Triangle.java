@@ -30,12 +30,10 @@ public class Triangle {
     }
 
     public boolean exist(double a, double c, double b) {
-        if ((a + b >= c) && (b + c >= a) && (c + a >= b)) {
-            return true;
-        } else
-            return false;
+        return (a + b >= c) && (b + c >= a) && (c + a >= b);
     }
 }
+
 
 
 
