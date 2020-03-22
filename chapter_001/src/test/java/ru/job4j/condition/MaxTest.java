@@ -19,4 +19,14 @@ public class MaxTest {
         int result = Max.max(7, 7);
         assertThat(result, is(7));
     }
+    @Test
+    public void whenMaxToThree() {
+        int result = Max.max(2, 5, 4);
+        assertThat(result, is(5));
+    }
+    @Test
+    public void whenMaxToFour() {
+        int result = Max.max(5, 8, 2, 9);
+        assertThat(result, is(9));
+    }
 }
