@@ -47,32 +47,37 @@ public class Shop {
 
         System.out.println("Метод delete" + System.lineSeparator());
 
-        Product eat[] = new Product[6];
-        eat[0] = new Product("Meat",2);
-        eat[1] = new Product("Bread",1);
-        eat[2] = new Product("Apple",5);
-        eat[3] = new Product("Water",6);
-        eat[4] = new Product("Cheese",1);
-        eat[5] = new Product("Tomato",4);
-
-
-        delete(eat);
+        delete(products, 1);
 
     }
 
-    public static Product[] delete(Product[] eat) {
+    public static Product[] delete(Product[] products, int index) {
 
-        for (int i = 0; i < eat.length - 1; i++) {
-            Product product = eat[i + 1];
-            if (product != null) {
-                System.out.println(product.getName());
-            } else {
-                System.out.println("null");
+
+        for (int i = 0; i < products.length - 1; i++) {
+
+            if (i < index) { //
+                Product product = products[i];
+                if (product != null) {
+                    System.out.println(product.getName());
+                } else {
+                    System.out.println("null");
+                }
+
+            } else if (i >= index) {
+                products[i] = null;
+                products[i] = products[i + 1];
+                Product product = products[i];
+                if (product != null) {
+                    System.out.println(product.getName());
+                } else {
+                    System.out.println("null");
+                }
             }
         }
-        eat[eat.length-1] = null;
-        System.out.println(eat[eat.length-1]);
-        return eat;
+        products[products.length - 1] = null;
+        System.out.println(products[products.length - 1]);
+        return products;
     }
 }
 
