@@ -96,4 +96,39 @@ public class Tracker {
         }
         return item;
     }
+
+    /**
+     * Метод редактирует заявку и возвращает true или false.
+     *
+     * @return result.
+     */
+    public boolean replace(String id, String newItem) {
+        boolean result = false;
+        Item item = findById(id);
+        if (item != null) {
+            item.setName(newItem);
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
+
+    /**
+     * Метод удаляет заявку по ID
+     * @param id
+     * @return result
+     */
+    public boolean delete (String id) {
+        String newItem = null;
+        boolean result = false;
+        Item item = findById(id);
+        if (item != null) {
+            item.setName(newItem);
+            result = true;
+        } else {
+            result = false;
+        }
+        return result;
+    }
 }
