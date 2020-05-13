@@ -36,7 +36,6 @@ public class StarUI {
                     System.out.println("Error replace Item.");
                 }
             } else if (select == 3) {
-                //
                 System.out.println("== Delete Item ==");
                 System.out.println("Input ID number for delete");
                 String idNumber = scanner.nextLine();
@@ -49,17 +48,26 @@ public class StarUI {
             } else if (select == 4) {
                 System.out.println("== Find item by ID ==");
                 System.out.println("Enter ID: ");
+
                 String idNumber = scanner.nextLine();
-                System.out.println(tracker.findById(idNumber));
+                if (tracker.findById(idNumber) != null) {
+                    System.out.println(tracker.findById(idNumber));
+                } else {
+                    System.out.println("ID number " + idNumber + " don't exist.");
+                }
 
             } else if (select == 5) {
                 System.out.println("== Find by Name ==");
                 System.out.println("Enter Name: ");
                 String name = scanner.nextLine();
                 Item[] findName = tracker.findByName(name);
-                for (int i = 0; i < findName.length; i++) {
-                    Item itemName = findName[i];
-                    System.out.println(itemName.getName() + " " + itemName.getId());
+                if (findName.length > 0) {
+                    for (int i = 0; i < findName.length; i++) {
+                        Item itemName = findName[i];
+                        System.out.println(itemName);
+                    }
+                } else {
+                    System.out.println("ID name " + name + " don't exist.");
                 }
             } else if (select == 6) {
                 run = false;
