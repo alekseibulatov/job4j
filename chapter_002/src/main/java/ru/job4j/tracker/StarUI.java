@@ -20,7 +20,7 @@ public class StarUI {
                 Item[] items = tracker.findAll();
                 for (int i = 0; i < items.length; i++) {
                     Item item = items[i];
-                    System.out.println(item.getName());
+                    System.out.println(item);
                 }
 
             } else if (select == 2) {
@@ -48,10 +48,10 @@ public class StarUI {
             } else if (select == 4) {
                 System.out.println("== Find item by ID ==");
                 System.out.println("Enter ID: ");
-
                 String idNumber = scanner.nextLine();
-                if (tracker.findById(idNumber) != null) {
-                    System.out.println(tracker.findById(idNumber));
+                Item id = tracker.findById(idNumber);
+                if (id != null) {
+                    System.out.println(id);
                 } else {
                     System.out.println("ID number " + idNumber + " don't exist.");
                 }
