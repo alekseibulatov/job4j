@@ -1,7 +1,7 @@
 package ru.job4j.tracker;
 
 
-public class StarUI {
+public class StartUI {
 
     public static void createItem(Input input, Tracker tracker) {
         System.out.println("== Create a new Item ==");
@@ -72,17 +72,17 @@ public class StarUI {
             this.showMenu();
             int select = input.askInt("Select: ");
             if (select == 0) {
-                StarUI.createItem(input, tracker);
+                StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                StarUI.showAllItem(tracker);
+                StartUI.showAllItem(tracker);
             } else if (select == 2) {
-                StarUI.editItem(input, tracker);
+                StartUI.editItem(input, tracker);
             } else if (select == 3) {
-                StarUI.deleteItem(input, tracker);
+                StartUI.deleteItem(input, tracker);
             } else if (select == 4) {
-                StarUI.findItemById(input, tracker);
+                StartUI.findItemById(input, tracker);
             } else if (select == 5) {
-                StarUI.findItemByName(input, tracker);
+                StartUI.findItemByName(input, tracker);
             } else if (select == 6) {
                 run = false;
             }
@@ -104,6 +104,6 @@ public class StarUI {
     public static void main(String[] args) {
         Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StarUI().init(input, tracker);
+        new StartUI().init(input, tracker);
     }
 }
