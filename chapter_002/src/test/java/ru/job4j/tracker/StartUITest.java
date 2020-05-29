@@ -30,7 +30,7 @@ public class StartUITest {
     @Test
     public void whenDeleteItem() {
         Tracker tracker = new Tracker();
-        Item item = new Item(null);
+        Item item = new Item("new item");
         tracker.add(item);
         String[] answers = {item.getId(), null};
         StartUI.deleteItem(new StubInput(answers), tracker);
