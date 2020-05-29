@@ -119,7 +119,7 @@ public class Tracker {
      * @param id
      * @return result
      */
-    public boolean delete (String id) {
+    public boolean delete(String id) {
         String newItem = null;
         boolean result = false;
         Item item = findById(id);

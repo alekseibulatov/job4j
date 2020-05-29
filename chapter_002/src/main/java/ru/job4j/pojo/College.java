@@ -7,7 +7,7 @@ public class College {
         student.setGroupNumber("282/y");
         student.setDate("13.04.2020");
 
-        System.out.println(student.getFullName() + " in group number " + student.getGroupNumber() +
-                " date of receipt " + student.getDate());
+        System.out.println(student.getFullName() + " in group number " + student.getGroupNumber()
+             + " date of receipt " + student.getDate());
     }
 }

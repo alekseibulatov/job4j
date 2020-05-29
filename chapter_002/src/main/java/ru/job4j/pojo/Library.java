@@ -30,8 +30,9 @@ public class Library {
         System.out.println("Search book Clean Code " + System.lineSeparator());
         for (int index = 0; index < bk.length; index++) {
             Book name = bk[index];
-            if (name.equals(bk[1]))
+            if (name.equals(bk[1])) {
                 System.out.println(name.getName() + " - " + name.getPageCount());
+            }
         }
     }
 }
