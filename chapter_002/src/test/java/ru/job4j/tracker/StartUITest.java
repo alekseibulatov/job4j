@@ -13,7 +13,7 @@ public class StartUITest {
         Output out = new StubOutput();
         Input in = new StubInput(new String[]{"0", "Item name", "1"});
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new CreateAction(out), new ExitAction()};
+        UserAction[] actions = {new CreateAction(out), new ExitAction(out)};
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findAll()[0].getName(), is("Item name"));
     }
@@ -22,12 +22,11 @@ public class StartUITest {
     public void whenReplaceItem() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        /* Добавим в tracker новую заявку */
+
         Item item = tracker.add(new Item("Replace item"));
-        /* Входные данные должны содержать ID добавленной заявки item.getId(0) */
         String replacedName = "New item name";
         Input in = new StubInput(new String[]{"0", item.getId(), replacedName, "1"});
-        UserAction[] actions = {new EditAction(), new ExitAction()};
+        UserAction[] actions = {new EditAction(out), new ExitAction(out)};
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(replacedName));
 
@@ -37,11 +36,11 @@ public class StartUITest {
     public void whenDeleteItem() {
         Output out = new StubOutput();
         Tracker tracker = new Tracker();
-        /* Добавляем в tracker  новую заявку */
+
         Item item = tracker.add(new Item("Deleted item"));
-        /* Входные данные должны содержать ID  добавленной заявки item.getId() */
+
         Input in = new StubInput(new String[]{"0", item.getId(), "1"});
-        UserAction[] actions = {new DeleteAction(), new ExitAction()};
+        UserAction[] actions = {new DeleteAction(out), new ExitAction(out)};
         new StartUI(out).init(in, tracker, actions);
         assertThat(tracker.findById(item.getId()).getName(), is(nullValue()));
     }
@@ -49,11 +48,27 @@ public class StartUITest {
     @Test
     public void whenExit() {
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"0"});
+        Input in = new StubInput(new String[]{"0"});
         Tracker tracker = new Tracker();
-        UserAction[] actions = {new ExitAction()};
+        UserAction[] actions = {new ExitAction(out)};
         new StartUI(out).init(in, tracker, actions);
-        assertThat(out.toString(), is("0."  +  "== Exit ==" + System.lineSeparator()));
+        assertThat(out.toString(), is("Menu." + System.lineSeparator() + "0."
+                + "== Exit ==" + System.lineSeparator()
+                + "== Exit ==" + System.lineSeparator()));
     }
 
+    @Test
+    public void whenShowAllAction() {
+
+    }
+
+    @Test
+    public void whenFindActionById() {
+
+    }
+
+    @Test
+    public void whenFindActionByName() {
+
+    }
 }
