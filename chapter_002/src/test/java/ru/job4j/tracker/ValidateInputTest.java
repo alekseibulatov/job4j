@@ -9,7 +9,7 @@ public class ValidateInputTest {
     @Test
     public void whenInvalidInput() {
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"one", "1"});
+        Input in = new StubInput(new String[]{"one", "1"});
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu");
         assertThat(selected, is(1));
@@ -18,9 +18,18 @@ public class ValidateInputTest {
     @Test
     public void whenTrueInput() {
         Output out = new StubOutput();
-        Input in = new StubInput(new String[] {"2", "1"});
+        Input in = new StubInput(new String[]{"2", "1"});
         ValidateInput input = new ValidateInput(out, in);
         int selected = input.askInt("Enter menu");
         assertThat(selected, is(2));
+    }
+
+    @Test
+    public void whenOutput() {
+        Output out = new StubOutput();
+        Input in = new StubInput(new String[]{"one", "1"});
+        ValidateInput input = new ValidateInput(out, in);
+        int selected = input.askInt("Enter menu");
+        assertThat(out.toString(), is("Please enter validate data again." + System.lineSeparator()));
     }
 }
