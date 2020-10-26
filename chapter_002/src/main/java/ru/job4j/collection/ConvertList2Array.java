@@ -8,9 +8,15 @@ public class ConvertList2Array {
         int[][] array = new int[groups][cells];
         int row = 0, cell = 0;
         for (Integer num : list) {
-            array[row][cell] = num;
+            if (cell < groups) {
+                array[row][cell] = num;
+                cell++;
+            }
+            if (cell >= groups) {
+                row++;
+                cell = 0;
+            }
         }
-
         return array;
     }
 
