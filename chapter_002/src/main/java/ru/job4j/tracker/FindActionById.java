@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+
 public class FindActionById implements UserAction {
     private final Output out;
 
@@ -16,9 +18,11 @@ public class FindActionById implements UserAction {
     public boolean execute(Input input, Tracker tracker) {
         out.println("== Find item by ID ==");
         String idNumber = input.askStr("Enter ID: ");
-        Item id = tracker.findById(idNumber);
+        ArrayList<Item> id = tracker.findById(idNumber);
         if (id != null) {
-            out.println(id);
+            for (Item v : id) {
+                out.println(v.getName() + " " + v.getId());
+            }
         } else {
             out.println("ID number " + idNumber + " don't exist.");
         }

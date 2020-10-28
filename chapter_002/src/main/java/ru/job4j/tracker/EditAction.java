@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.util.ArrayList;
+
 public class EditAction implements UserAction {
     private final Output out;
 
@@ -17,7 +19,9 @@ public class EditAction implements UserAction {
         out.println("== Edit Item ==");
         String idNumber = input.askStr("Input ID number for replace");
         String newItem = input.askStr("Input new Item");
-        Item item = new Item(newItem);
+       // Item item = new Item(newItem);
+     //  ArrayList<Item> item = new ArrayList<Item>(newItem);
+
         if (tracker.replace(idNumber, newItem)) {
             out.println("Item successfully replace.");
         } else {
