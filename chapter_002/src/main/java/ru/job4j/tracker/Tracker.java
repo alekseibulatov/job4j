@@ -2,14 +2,14 @@ package ru.job4j.tracker;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 public class Tracker {
     /**
      * Массив для хранения заявок.
      */
-    //private final Item[] items = new Item[100];
-    private final ArrayList<Item> items = new ArrayList<Item>();
+    private final List<Item> items = new ArrayList<Item>();
 
 
     /**
@@ -17,7 +17,7 @@ public class Tracker {
      *
      * @param item новая заявка
      */
-    public ArrayList<Item> add(Item item) {
+    public List<Item> add(Item item) {
         item.setId(generateId());
         items.add(item);
         return items;
@@ -40,15 +40,15 @@ public class Tracker {
      *
      * @return Arrays.copyOf(itemsWithoutNull, size);
      */
-    public ArrayList<Item> findAll() {
+    public List<Item> findAll() {
 
-        ArrayList<Item> itemsWithoutNull = new ArrayList<Item>();
-        for (Item item1 : items) {
-            if (item1 != null) {
-                itemsWithoutNull.add(item1);
-            }
-        }
-        return itemsWithoutNull;
+        //    List<Item> itemsWithoutNull = new ArrayList<Item>();
+        //  for (Item item1 : items) {
+        //      if (item1 != null) {
+        //          itemsWithoutNull.add(item1);
+        //       }
+        //  }
+        return items;
     }
 
     /**
@@ -58,8 +58,8 @@ public class Tracker {
      * @param key
      * @return itemsFindByName
      */
-    public ArrayList<Item> findByName(String key) {
-        ArrayList<Item> itemsFindByName = new ArrayList<Item>();
+    public List<Item> findByName(String key) {
+        List<Item> itemsFindByName = new ArrayList<Item>();
         for (Item n : items) {
             if (n.getName().equals(key)) {
                 itemsFindByName.add(n);
@@ -75,8 +75,8 @@ public class Tracker {
      * @param id
      * @return item
      */
-    public ArrayList<Item> findById(String id) {
-        ArrayList<Item> item = new ArrayList<Item>();
+    public Item findById(String id) {
+    /*    List<Item> item = new ArrayList<Item>();
         for (Item v : items) {
             if (v.getId().equals(id)) {
                 item.add(v);
@@ -84,6 +84,17 @@ public class Tracker {
         }
         return item;
     }
+    */
+        Item item = null;
+        for (Item v : items) {
+            if (v.getId().equals(id)) {
+                int i = items.indexOf(v);
+                item = items.get(i);
+            }
+        }
+        return item;
+    }
+
 
     /**
      * Метод редактирует заявку и возвращает true или false.
@@ -92,17 +103,20 @@ public class Tracker {
      */
     public boolean replace(String id, String newItem) {
         boolean result = false;
-        ArrayList<Item> item = findById(id);
+        Item item = findById(id);
         if (item != null) {
-            for (Item c : item) {
-                c.setName(newItem);
-            }
+            item.setName(newItem);
+            //if (item != null) {
+            //  for (Item c : item) {
+            //       c.setName(newItem);
+            //    }
             result = true;
         } else {
             result = false;
         }
         return result;
     }
+
 
     /**
      * Метод удаляет заявку по ID
@@ -113,11 +127,11 @@ public class Tracker {
     public boolean delete(String id) {
         String newItem = null;
         boolean result = false;
-        ArrayList<Item> item = findById(id);
+        Item item = findById(id);
         if (item != null) {
-            for (Item x : item) {
-                x.setName(newItem);
-            }
+            item.setName(newItem);
+            //for (Item x : item) {
+            //    x.setName(newItem);
             result = true;
         } else {
             result = false;
@@ -125,4 +139,5 @@ public class Tracker {
         return result;
     }
 }
+
 
