@@ -41,13 +41,6 @@ public class Tracker {
      * @return Arrays.copyOf(itemsWithoutNull, size);
      */
     public List<Item> findAll() {
-
-        //    List<Item> itemsWithoutNull = new ArrayList<Item>();
-        //  for (Item item1 : items) {
-        //      if (item1 != null) {
-        //          itemsWithoutNull.add(item1);
-        //       }
-        //  }
         return items;
     }
 
@@ -69,6 +62,22 @@ public class Tracker {
     }
 
     /**
+     * Метод ищет индекс заявки по id
+     *
+     * @return index
+     */
+    public int findIndex(String id) {
+        int index = 0;
+        for (int i = 0; i < items.size(); i++) {
+            Item item = items.get(i);
+            if (id == item.getId()) {
+                index = i;
+            }
+        }
+        return index;
+    }
+
+    /**
      * Метод проверяет в цикле все элементы массива items, сравнивая id  с аргументом String id.
      * Возвращает найденный Item или null если не нашел.
      *
@@ -76,22 +85,8 @@ public class Tracker {
      * @return item
      */
     public Item findById(String id) {
-    /*    List<Item> item = new ArrayList<Item>();
-        for (Item v : items) {
-            if (v.getId().equals(id)) {
-                item.add(v);
-            }
-        }
-        return item;
-    }
-    */
         Item item = null;
-        for (Item v : items) {
-            if (v.getId().equals(id)) {
-                int i = items.indexOf(v);
-                item = items.get(i);
-            }
-        }
+        item = items.get(findIndex(id));
         return item;
     }
 
@@ -104,12 +99,10 @@ public class Tracker {
     public boolean replace(String id, String newItem) {
         boolean result = false;
         Item item = findById(id);
+        Item a = new Item(newItem);
+        a.setId(generateId());
         if (item != null) {
-            item.setName(newItem);
-            //if (item != null) {
-            //  for (Item c : item) {
-            //       c.setName(newItem);
-            //    }
+            items.set(findIndex(id), a);
             result = true;
         } else {
             result = false;
@@ -129,9 +122,7 @@ public class Tracker {
         boolean result = false;
         Item item = findById(id);
         if (item != null) {
-            item.setName(newItem);
-            //for (Item x : item) {
-            //    x.setName(newItem);
+            items.remove(findIndex(id));
             result = true;
         } else {
             result = false;
