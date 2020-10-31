@@ -22,9 +22,6 @@ public class FindActionById implements UserAction {
         Item id = tracker.findById(idNumber);
         if (id != null) {
             out.println(id);
-            //for (Item v : id) {
-            //    out.println(v.getName() + " " + v.getId());
-
         } else {
             out.println("ID number " + idNumber + " don't exist.");
         }

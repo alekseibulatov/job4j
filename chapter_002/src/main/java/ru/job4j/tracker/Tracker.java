@@ -67,11 +67,12 @@ public class Tracker {
      * @return index
      */
     public int findIndex(String id) {
-        int index = 0;
+        int index = -1;
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
-            if (id == item.getId()) {
+            if (id.equals(item.getId())) {
                 index = i;
+                break;
             }
         }
         return index;
@@ -85,6 +86,9 @@ public class Tracker {
      * @return item
      */
     public Item findById(String id) {
+        if (findIndex(id) == -1) {
+            System.out.println("Item with ID number " + id + " don't exist.");
+        }
         Item item = null;
         item = items.get(findIndex(id));
         return item;
