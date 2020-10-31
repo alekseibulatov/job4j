@@ -66,7 +66,7 @@ public class Tracker {
      *
      * @return index
      */
-    public int findIndex(String id) {
+    private int findIndex(String id) {
         int index = -1;
         for (int i = 0; i < items.size(); i++) {
             Item item = items.get(i);
@@ -86,11 +86,13 @@ public class Tracker {
      * @return item
      */
     public Item findById(String id) {
-        if (findIndex(id) == -1) {
-            System.out.println("Item with ID number " + id + " don't exist.");
-        }
         Item item = null;
-        item = items.get(findIndex(id));
+        if (findIndex(id) == -1) {
+            item = null;
+        } else {
+            item = items.get(findIndex(id));
+            return item;
+        }
         return item;
     }
 
@@ -102,14 +104,13 @@ public class Tracker {
      */
     public boolean replace(String id, String newItem) {
         boolean result = false;
-        Item item = findById(id);
-        Item a = new Item(newItem);
-        a.setId(generateId());
-        if (item != null) {
+        if (findIndex(id) == -1) {
+            result = false;
+        } else {
+            Item a = new Item(newItem);
+            a.setId(generateId());
             items.set(findIndex(id), a);
             result = true;
-        } else {
-            result = false;
         }
         return result;
     }
@@ -122,14 +123,12 @@ public class Tracker {
      * @return result
      */
     public boolean delete(String id) {
-        String newItem = null;
         boolean result = false;
-        Item item = findById(id);
-        if (item != null) {
+        if (findIndex(id) == -1) {
+            result = false;
+        } else {
             items.remove(findIndex(id));
             result = true;
-        } else {
-            result = false;
         }
         return result;
     }
