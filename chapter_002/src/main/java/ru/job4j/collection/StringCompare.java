@@ -1,38 +1,52 @@
 package ru.job4j.collection;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
 
 public class StringCompare implements Comparator<String> {
 
+
     @Override
     public int compare(String left, String right) {
-        int index = -1;
+        char[] ll = left.toCharArray();
         int value = -1;
-        if (left.length() > right.length()) {
-            for (int i = 0; i < right.length(); i++) {
-                index = i;
-            }
-          value =  Character.compare(left.charAt(index), right.charAt(index));
-        } else
-        if (left.length() < right.length()) {
-            for (int i = 0; i < left.length(); i++) {
-                index = i;
 
+        List<Character> l = new ArrayList<Character>();
+        for (char x : ll) {
+            l.add(x);
+        }
+        char[] rr = right.toCharArray();
 
-                value = Integer.compare(right.charAt(index), left.charAt(index));
+        List<Character> r = new ArrayList<Character>();
+        for (char z : rr) {
+            r.add(z);
+        }
+        if (l.size() <= r.size()) {
+            while (l.size() < r.size()) {
+                l.add('0');
             }
-
-        } else
-        if (left.length() == right.length()) {
-            for (int i = 0; i < left.length(); i++) {
-                index = i;
+            for (int i = 0; i < r.size(); i++) {
+                value = Character.compare(l.get(i), r.get(i));
+                if (value == 0) {
+                    continue;
+                } else
+                    return value;
             }
-           value = Character.compare(right.charAt(index), left.charAt(index));
+        }
+        if (r.size() < l.size()) {
+            while (r.size() < l.size()) {
+                r.add('0');
+            }
+            for (int i = 0; i < r.size(); i++) {
+                value = Character.compare(l.get(i), r.get(i));
+                if (value == 0) {
+                    continue;
+                } else
+                    return value;
+            }
         }
         return value;
     }
 }
-
-
-
