@@ -11,9 +11,7 @@ public class SortByUpNameItem implements Comparator<Item> {
         return first.getName().compareTo(second.getName());
     }
 
-  //  public static List<Item>  sort(List<Item> data) {
-   //    return  Collections.sort(data, new SortByUpNameItem());
-  //  }
+
 
 
 }

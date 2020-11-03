@@ -51,8 +51,10 @@ public class StartUITest {
         actions.add(new DeleteAction(out));
         actions.add(new ExitAction(out));
         new StartUI(out).init(in, tracker, actions);
-        assertThat(tracker.findById(item.get(0).getId()).getName(), is(nullValue()));
+        assertThat((item.size()), is(0));
+
     }
+
 
     @Test
     public void whenExit() {
