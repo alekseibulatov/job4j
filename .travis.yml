@@ -15,7 +15,7 @@ after_success:
 notifications:
   email:
     recipients:
-      -bulatov2803@gmail.com
+      - bulatov2803@gmail.com
     on_success: never # default: change
     on_failure: always # defa,ult: always
 
