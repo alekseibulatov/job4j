@@ -17,6 +17,7 @@ import java.util.TreeMap;
  * 7. В методе toString() отсутствует аннотация @Override.
  */
 
+/*
 public class Bank {
 
     private TreeMap<User, ArrayList<Account> treemap = new TreeMap<>();
@@ -58,3 +59,4 @@ public class Bank {
         return "Bank{" + "accounts=" + treemap + "}";
     }
 }
+*/
