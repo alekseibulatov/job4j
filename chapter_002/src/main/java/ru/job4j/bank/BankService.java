@@ -1,8 +1,13 @@
 package ru.job4j.bank;
 
-import javax.swing.*;
-import javax.swing.plaf.InsetsUIResource;
+/**
+ * @author aleksei bulatov
+ * @version 1
+ * @since 09.11.20
+ */
+
 import java.util.*;
+
 
 public class BankService {
     private Map<User, List<Account>> users = new HashMap<>();
@@ -23,17 +28,11 @@ public class BankService {
     /**
      * Метод добавляет  новый счет к пользователю. В методе реализована проверка,
      * что такого счета у пользователя еще нет.
-     * <p>
-     * Первоначально пользователя нужно найти по паспорту. Для этого нужно использовать
-     * метод findByPassport.
-     * После этого мы получим список всех счетов пользователя и добавим новый счет к ним.
-     * В этом методе должна быть проверка, что такого счета у пользователя еще нет.
      *
      * @param passport
      * @param account
      */
     public void addAccount(String passport, Account account) {
-    //    if (users.get(findByPassport(passport)) != null) {
         if (findByPassport(passport) != null) {
             User userAccount = findByPassport(passport);
             users.get(userAccount).add(account);
@@ -41,7 +40,6 @@ public class BankService {
             users.remove(passport, account);
         }
     }
-
 
 
     /**
@@ -61,8 +59,7 @@ public class BankService {
     }
 
     /**
-     * Метод идещет счет пользователя по реквизитам. Сначала нужно найти пользователя.
-     * Потом получить список счетов этого пользователя и в нем найти нужный счет.
+     * Метод идещет счет пользователя по реквизитам.
      *
      * @param passport
      * @param requisite
@@ -91,19 +88,22 @@ public class BankService {
      * @param destPassport
      * @param destRequisite
      * @param amount
-     * @return
+     * @return rsl
      */
 
     public boolean transferMoney(String srcPassport, String srcRequisite,
                                  String destPassport, String destRequisite, double amount) {
         boolean rsl = false;
-        Account srcAccount = new Account(srcRequisite, amount);
-        if (srcAccount.getRequisite() == null && srcAccount.getBalance() == 0) {
-            rsl = false;
+        Account srcAccount = findByRequisite(srcPassport, srcRequisite);
+        Account destAccount = findByRequisite(destPassport, destRequisite);
+        if (srcAccount.getRequisite() == null
+                && (srcAccount.getBalance()) == 0) {
             return rsl;
-        } else
-          //  users.putIfAbsent(destPassport, )
-
+        } else if (srcPassport == destPassport) {
+            srcAccount.setBalance(srcAccount.getBalance() - amount);
+            destAccount.setBalance(destAccount.getBalance() + amount);
+            rsl = true;
+        }
         return rsl;
     }
 }

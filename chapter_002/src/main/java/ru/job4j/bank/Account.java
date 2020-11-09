@@ -32,7 +32,7 @@ public class Account {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Account account = (Account) o;
-        return   Objects.equals(requisite, account.requisite);
+        return Objects.equals(requisite, account.requisite);
     }
 
     @Override
