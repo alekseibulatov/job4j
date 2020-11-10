@@ -20,9 +20,8 @@ public class BankService {
      */
 
     public void addUser(User user) {
-        if (!user.getPassport().equals(findByPassport(user.getPassport()))) {
-            users.put(user, new ArrayList<Account>());
-        }
+        users.putIfAbsent(user, new ArrayList<Account>());
+
     }
 
     /**
@@ -34,11 +33,10 @@ public class BankService {
      */
     public void addAccount(String passport, Account account) {
         User userAccount = findByPassport(passport);
-        if (userAccount != null) {
-            users.get(userAccount).add(account);
-        } else {
-            users.remove(passport, account);
+        if (userAccount.equals(null) && users.get(userAccount).equals(account)) {
+            users.get(userAccount);
         }
+        users.get(userAccount).add(account);
     }
 
 
@@ -51,8 +49,9 @@ public class BankService {
     public User findByPassport(String passport) {
         User userFind = null;
         for (User user : users.keySet()) {
-            if (user.getPassport() == passport) {
+            if (user.getPassport().equals(passport)) {
                 userFind = user;
+                break;
             }
         }
         return userFind;
@@ -67,11 +66,15 @@ public class BankService {
      */
     public Account findByRequisite(String passport, String requisite) {
         Account account = null;
-        List<Account> list = users.get(findByPassport(passport));
-        if (list != null) {
+        User user = findByPassport(passport);
+        if (user == null) {
+            return null;
+        } else {
+            List<Account> list = users.get(user);
             for (Account a : list) {
-                if (a.getRequisite() == requisite) {
+                if (a.getRequisite().equals(requisite)) {
                     account = a;
+                    break;
                 }
             }
         }
