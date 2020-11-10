@@ -33,8 +33,8 @@ public class BankService {
      * @param account
      */
     public void addAccount(String passport, Account account) {
-        if (findByPassport(passport) != null) {
-            User userAccount = findByPassport(passport);
+        User userAccount = findByPassport(passport);
+        if (userAccount != null) {
             users.get(userAccount).add(account);
         } else {
             users.remove(passport, account);
