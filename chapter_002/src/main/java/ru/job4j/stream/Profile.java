@@ -1,5 +1,7 @@
 package ru.job4j.stream;
 
+import java.util.Objects;
+
 public class Profile {
     private Address address;
     private String name;
@@ -27,4 +29,19 @@ public class Profile {
                 + " " + name
                 + '}';
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Profile profile = (Profile) o;
+        return Objects.equals(address, profile.address) &&
+                Objects.equals(name, profile.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(address, name);
+    }
 }
+
