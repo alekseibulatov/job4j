@@ -13,7 +13,6 @@ public class School {
 
     public Map<String, Student> convertToMap(List<Student> students) {
         return students.stream()
-                .distinct()
                 .collect(Collectors.toMap(Student::getSurname,
                         Function.identity(),
                         (existing, replacement) -> existing));
