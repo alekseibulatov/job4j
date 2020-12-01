@@ -1,12 +1,12 @@
 package ru.job4j.bank;
 
+import java.util.*;
+
 /**
  * @author aleksei bulatov
  * @version 1
  * @since 09.11.20
  */
-
-import java.util.*;
 
 
 public class BankService {
@@ -20,7 +20,7 @@ public class BankService {
      */
 
     public void addUser(User user) {
-        users.putIfAbsent(user, new ArrayList<Account>());
+        users.putIfAbsent(user, new ArrayList<>());
 
     }
 
@@ -28,8 +28,8 @@ public class BankService {
      * Метод добавляет  новый счет к пользователю. В методе реализована проверка,
      * что такого счета у пользователя еще нет.
      *
-     * @param passport
-     * @param account
+     * @param passport - паспорт
+     * @param account  - счет
      */
     public void addAccount(String passport, Account account) {
         User userAccount = findByPassport(passport);
@@ -39,24 +39,22 @@ public class BankService {
     }
 
 
-    /**
+    /*
      * Метод ищет пользователя по номеру паспорта.
      *
      * @param passport
      * @return userFind
      */
     public User findByPassport(String passport) {
-        User userFind = null;
-        for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                userFind = user;
-                break;
-            }
-        }
-        return userFind;
+        return users.keySet().
+                stream().
+                filter(x -> x.getPassport().
+                        equals(passport)).
+                findFirst().
+                orElse(null);
     }
 
-    /**
+    /*
      * Метод идещет счет пользователя по реквизитам.
      *
      * @param passport
@@ -69,13 +67,11 @@ public class BankService {
         if (user == null) {
             return null;
         } else {
-            List<Account> list = users.get(user);
-            for (Account a : list) {
-                if (a.getRequisite().equals(requisite)) {
-                    account = a;
-                    break;
-                }
-            }
+            account = users.get(user).
+                    stream().
+                    filter(x -> x.getRequisite().
+                            equals(requisite)).
+                    findFirst().orElse(null);
         }
         return account;
     }
@@ -85,11 +81,11 @@ public class BankService {
      * Если счёт не найден или не хватает денег на счёте srcAccount
      * (с которого переводят), то метод должен вернуть false.
      *
-     * @param srcPassport
-     * @param srcRequisite
-     * @param destPassport
-     * @param destRequisite
-     * @param amount
+     * @param srcPassport -паспорт
+     * @param srcRequisite - реквизиты с которых переводят деньги
+     * @param destPassport - паспорт
+     * @param destRequisite - реквезиты куда переводят деньги
+     * @param amount - сумма
      * @return rsl
      */
 
@@ -101,7 +97,7 @@ public class BankService {
         if (srcAccount.getRequisite() == null
                 && (srcAccount.getBalance()) == 0) {
             return rsl;
-        } else if (srcPassport == destPassport) {
+        } else if (srcPassport.equals(destPassport)) {
             srcAccount.setBalance(srcAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
             rsl = true;
