@@ -56,6 +56,9 @@ public class AnalyzeTest {
                         new Pupil("Petrov", List.of(new Subject("Math", 60), new Subject("Lang", 60)))
                 ).stream()
         );
+        for (Tuple s : average) {
+            System.out.println(s);
+        }
         assertThat(average, is(List.of(
                 new Tuple("Math", 80D),
                 new Tuple("Lang", 80D)
