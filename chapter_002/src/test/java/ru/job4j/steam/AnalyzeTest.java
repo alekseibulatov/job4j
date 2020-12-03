@@ -11,6 +11,7 @@ import ru.job4j.stream.Tuple;
 
 import java.util.List;
 
+
 public class AnalyzeTest {
 
     @Test

@@ -1,9 +1,9 @@
 package ru.job4j.stream;
 
-import java.util.List;
+
 import java.util.Objects;
 
-public class Tuple  {
+public class Tuple {
     private String name;
     private double score;
 
